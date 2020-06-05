@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>ng-switch</title>
+    </head>
+    <body>
+        <div ng-app="app">
+            <div ng-controller="mainController">
+                <div ng-switch="name">
+                    <div ng-switch-when="zhangsan">
+                        this is zhangsan
+                    </div>
+                    <div ng-switch-when="lisi">
+                            this is lisi
+                    </div>
+                    <div ng-switch-default>
+                        no found
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+        <script src="lib/angular.min.js"></script>
+        <script>
+            var app = angular.module('app', []);
+            app.controller('mainController', function ($scope) {
+                $scope.name="lisi"
+                    
+            });
+    </script>
+    </body>
+</html>
