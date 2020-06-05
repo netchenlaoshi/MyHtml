@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng-bind</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="MainController">
+            <p>*使用插值语法去除data的效果</p>
+            <span>{{data}}</span>
+            <br/>
+            <p>*使用ng-bind去除data的结果</p>
+            <span ng-bind="data"></span>
+        </div>
+    </div>
+    <script src="E:\qianduankaifa\qianduankaifa\qianduan\zuoye\MyHtml\angular\chapter2\lib\angular.min.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        app.controller('MainController',function($scope){
+            $scope.data='this is data';
+        });
+        
+    </script>
+</body>
+</html>

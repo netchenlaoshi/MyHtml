@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng-repeat</title>
+</head>
+<body>
+    <div ng-app="demo">
+        <div ng-controller="MainController">
+            <table style="border: solid 1px">
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>相关信息</th>
+            </tr>
+            <tr ng-repeat="item in users">
+                <td>{{item.name}}</td>
+                <td>{{item.sex}}</td>
+                <td>{{item.age}}</td>
+                <td>index:{{$index}},first:{{$first}},list:{{$list}},middle:{{$middle}},even:{{$even}},odd:{{$odd}}</td>
+            </tr>
+            </table>
+        </div>
+    </div>
+    <script src="E:\qianduankaifa\qianduankaifa\qianduan\zuoye\MyHtml\angular\chapter2\lib\angular.min.js"></script>
+    <script>
+        var demo=angular.module('demo',[])
+        demo.controller('MainController',function($scope){
+            $scope.users=[
+                {name:"张三",sex:"男",age:"24"},
+                {name:"李四",sex:"女",age:"13"},
+                {name:"王五",sex:"男",age:"38"},
+                {name:"赵六",sex:"女",age:"55"}
+            ];
+        });
+    </script>
+</body>
+</html>
