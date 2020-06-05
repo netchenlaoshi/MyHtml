@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng-change</title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="mainController">
+        <p>在输入框中输入一些信息 :</p>
+        <input type="text" ng-change="myFunc()" ng-model="myValue" />
+        <p>输入框已经修改了{{count}}</p>
+    </div>
+    <script src="lib/angular.js"></script>
+    <script>
+        angular.module('myApp',[])
+        .controller('mainController', ['$scope',function($scope){
+            //定义属性message，用于插值语法
+            $scope.count=0;
+            //定义函数用于绑定 ng-change 指令
+            $scope.myFunc=function(){
+                $scope.count++;
+            };
+        }]);
+    </script>
+</body>
+</html>
