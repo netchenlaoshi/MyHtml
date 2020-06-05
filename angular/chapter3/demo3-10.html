@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat</title>
+</head>
+<body>
+    <div ng-app="demo">
+        <div ng-controller="MainController">
+            <table style="border:solid 1px">
+              <tr>
+                  <th>姓名</th>
+                  <th>性别</th>
+                  <th>年龄</th>
+                  <th>相关信息</th>
+              </tr>
+            <tr ng-repeat="item in users">
+                <td>{{item.name}}</td>
+                <td>{{item.sex}}</td>
+                <td>{{item.age}}</td>
+                <td>index:{{$index}},first:{{$first}},last:{{$last}},        
+                  middle:{{$middle}},even:{{$even}},odd:{{$odd}}</td>
+            </tr>
+            </table>
+        </div>
+    </div>
+    <script src="E:\Gitqd\net19049\hezuo\MyHtml\angular\chapter2\lib\angular.min.js"></script>
+    <script>
+        var demo=angular.module('demo',[]);
+        demo.controller('MainController',function ($scope){
+            $scope.users=[
+                {name:"dingzexin",sex:"man",age:18},
+                {name:"zhangsan",sex:"man",age:18},
+                {name:"lisi",sex:"man",age:18},
+            ];
+        });
+    </script>
+</body>
+</html>

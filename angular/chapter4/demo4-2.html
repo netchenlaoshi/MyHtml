@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$apply()函数</title>
+</head>
+<body>
+    <div ng-app="demo">
+        <div ng-controller="MainController">
+            <input type="number" ng-model="data">
+            <button onclick="plusOne()">加 1</button>
+        </div>
+    </div>
+    <script src="E:\Gitqd\net19049\hezuo\MyHtml\angular\chapter2\lib\angular.min.js"></script>
+    <script>
+        var demo=angular.module('demo',[]);
+        demo.controller('MainController',function($rootScope,$scope){
+            $scope.data=1;
+            window.scope=$scope;
+        });
+        function plusOne(){
+            window.scope.data+=1;
+            window.scope.$apply();
+        }
+    </script>
+</body>
+</html>

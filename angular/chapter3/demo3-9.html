@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-switch</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="mainController">
+            <div ng-switch="name">
+                <div ng-switch-when="zhangsan">
+                    this is zhangsan
+                </div>
+                <div ng-switch-when="lisi">
+                    this is lisi
+                </div>
+                <div ng-switch-default>
+                    找不到此人
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="E:\Gitqd\net19049\hezuo\MyHtml\angular\chapter2\lib\angular.min.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        app.controller('mainController',function($scope){
+            $scope.name='lisi'
+        });
+    </script>
+</body>
+</html>
