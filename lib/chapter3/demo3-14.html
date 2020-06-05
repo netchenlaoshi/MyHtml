@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义指令</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div my-say-hello></div>
+    </div>
+    <script src="C:\project\myhtml\zuoye\myhtml\lib\chapter2\angular.min.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        app.directive('mySayHello',function(){
+            return{
+                template:"<p>hellow world</p>",
+                replace:false
+            }
+        });
+    </script>
+</body>
+</html>
