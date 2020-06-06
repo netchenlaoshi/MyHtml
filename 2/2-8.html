@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS表达式</title>
+</head>
+<body>
+    <div ng-app="demo">
+        <div ng-controller="MainController">
+            <!--hello-->
+            {{msg}}
+            <br>
+            <!--hello world-->
+            {{msg+ 'world'}}
+            <br>
+            <!--2-->
+            {{num+1}}
+            <br>
+            <!--1-->
+            {{fn()}}
+            <br>
+            <!--1+5-->
+            {{fn()+5}}
+            <br>
+            <!--三目运算-->
+            {{boolean?1:5}}
+            <br>
+            <!--数组-->
+            {{arr[2]}}
+        </div>
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script>
+        var demo=angular.module('demo',[]);
+        //在MainController作用域中定义不同类型的属性和方法
+        demo.controller('MainController',function($scope){
+            $scope.msg='hello';
+            $scope.num=1;
+            $scope.fn=function(){
+                return 1;
+            };
+            $scope.boolean=true;
+            $scope.arr=[1,2,3,4,5];
+        });
+    </script>    
+</body>
+</html>

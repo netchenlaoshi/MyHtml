@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng-class</title>
+    <style>
+        /*定义样式*/
+        .myColor{
+            background-color:pink;
+        }
+        .myDiv{
+            width: 100px;
+            font-size: 30px;
+            padding: 30px;
+        }
+        .myBorder{
+            border: 5px solid darkgray;
+        }
+    </style>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="mainController">
+            <!--绑定样式-->
+            <div style="height: 100px" ng-class="classOptions">         
+                要努力向上
+            </div>
+        </div>
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script>
+        //创建一个AngularJS模块
+        var app=angular.module('app',[]);
+        app.controller('mainController',function($scope){
+            //创建classOptions对象，对已经有的CSS样式设置是否开启
+            $scope.classOptions={
+                "myColor":true,
+                "myDiv":true,
+                "myBorder":true,
+            }
+        });
+    </script>
+</body>
+</html>

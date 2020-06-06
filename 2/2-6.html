@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS根作用域</title>
+</head>
+<body>
+    <div ng-app="demo">
+        <!--$rootScope有效，但是MainController作用域无效-->
+        <p>*ng-app="demo"作用域显示结果：</p>
+        <span>{{rData}}</span>
+        <span>{{data}}</span>
+        <div ng-controller="MainController">
+            <!--$rootScope有效，但是MainController作用域也有效-->
+            <p>*ng-controller="MainController"作用域显示结果：</p>
+                <span>{{rData}}</span>
+                <span>{{data}}</span>
+        </div>
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script>
+        var demo=angular.module('demo',[]);
+        //获取根作用域
+        demo.controller('MainController',function($scope,$rootScope){
+            //使用根作用域定义属性rData
+            $rootScope.rData='hello rootScope';
+            //使用MainController作用域定义属性data
+            $scope.data='hello scope';
+        });
+    </script>
+</body>
+</html>

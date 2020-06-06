@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>传统方式实现计数器</title>
+</head>
+<body>
+    <input id="txt_value" type="number">
+    <input id="btn_add" type="button" value="增加">
+    <script>
+        (function(window,document){
+            var txt=document.querySelector('#txt_value');
+            var btn=document.querySelector('#btn_add');
+            btn.addEventListener('click',function(e){
+                var now=txt.value-0;
+                now=now+1;
+                txt.value=now;
+            })
+        })(window,document)
+    </script>
+</body>
+</html>
