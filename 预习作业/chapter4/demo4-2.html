@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$apply()函数</title>
+</head>
+<body>
+<div ng-app="app">
+    <div ng-controller="maincontroller">
+        <input type="number" ng-model='data'>
+        <button onclick="plusoOne()">加一</button>
+    </div>
+</div>    
+<script src="../../angularjs/lib/angular.min.js"></script>
+<script>
+    var app=angular.module('app',[]);
+    app.controller('maincontroller',function($rootScope,$scope){
+        $scope.data=1;
+        window.scope=$scope;
+    });
+    function plusoOne(){
+        window.scope.data+=1;
+        window.scope.$apply();
+    };
+</script>
+</body>
+</html>
