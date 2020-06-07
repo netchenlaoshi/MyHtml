@@ -1,41 +1,20 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
-
-
 <head>
-
     <meta charset="UTF-8">
-
     <title>使用AugularTS实现计数器</title>
-
 </head>
-
 <!--ng--app指定AngularJS有效范围-->
-
-
 
 <body>
 
-
-
     <body ng-app>
-
         <!--ng--model将值绑定到HTML输入控件-->
-
         <input type="number" ng-model="value" />
-
         <!--ng--click绑定事件-->
-
         <input type="button" ng-click="value=value+1" value="增加" />
-
         <!--引入angular.js文件-->
-
         <script src="lib/angular.min.js"></script>
-
     </body>
-
-
 
 </html>
