@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ng-bind</title>
+</head>
+<body>
+<div ng-app="app">
+<div ng-controller="MainController">
+<p> * 使用插值语法取出data的效果</p>
+<span>{(data)}</span>
+<br/>
+<p> * ng-bind取出 data的效果</p>
+<span ng-bind="data"></span>
+</div>
+</div>
+<script src="chapter/lib/angular.min.js"></script> 
+<script>
+var demo=angular.module('demoo',[]);
+app.controller("MainController",function($scope) {
+$scope.data="this is data";
+});    
+</script>  
+</body>
+</html>

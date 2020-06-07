@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域的嵌套</title>
+</head>
+<body>
+<div ng-app="demo">
+    <div ng-controller="MainController">
+        <p> * ng-controller="MainController"作用域显示结果:</p>
+        <span>{(mData)}</span>
+        <span>{(dData)}</span>
+        <div ng-controller="DataController">
+            <p> * ng-controller="DataController"作用域显示结果:</p>
+            <span>{(mData)}</span>
+            <span>{(dData)}</span>
+        </div>
+    </div>        
+</div>
+<script src="chapter/lib/angular.min.js"></script> 
+<script>
+    var demo=angular.module('demoo',[]);
+    demo.controller("MainController",function($scope) {
+        $rootscope.mData="hello MainController";
+    });
+    demo.controller("DataController",function($scope) {
+        $rootscope.dData="hello DataController";
+    });    
+</script>  
+</body>
+</html>
