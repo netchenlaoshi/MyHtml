@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义指令</title>
+</head>
+<body>
+    <div ng-app="app">
+        <!--属性的名字由驼峰命名法的指令名mySayHello转换而来-->
+        <div my-say-hello></div>
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        /*用directive创建指令，
+        第1个参数是指令的名字，指令的名字必须用驼峰法命名，是AngularJS的强制要求
+        第2个参数是指令的工厂函数，它的返回值是一个对象，该对象用于描述这个指令
+        */
+        app.directive('mySayHello',function(){
+            //返回的对象用于描述这个指令
+            return {
+                //定义指令的模块
+                template:"<p>hello world</p>",
+                replace:false
+            }
+        });
+    </script>
+</body>
+</html>
