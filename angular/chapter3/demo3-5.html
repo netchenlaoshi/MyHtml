@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng-readonly和on-disabled</title>
+</head>
+
+<body>
+    <div ng-app="app">
+        <div ng-controller="MainController">
+            <from action="">
+                <input name="id1" type="text" ng-model="text" ng-readonly="boolean">
+                <br />
+                <input name="id2" type="text" ng-model="text" ng-readonly="boolean">
+                <br />
+                <br />
+                <input type="submit" value="提交">
+            </from>
+        </div>
+    </div>
+    <script src="lib/angular.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        app.controller('MainController',function($scope){
+            $scope.text='some text';
+            $scope.boolean=true;
+        });
+    </script>
+</body>
+
+</html>

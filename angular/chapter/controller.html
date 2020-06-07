@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>controller And Module</title>
+</head>
+<body ng-app="app">
+    <div ng-controller="mainController">
+        {{name}}
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        app.controller('mainController',function($scope){
+            $scope.name="chenlaoshi";
+        })
+    </script>
+</body>
+</html>
