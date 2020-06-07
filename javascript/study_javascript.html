@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习javascript</title>
+</head>
+<body>
+    <script>
+        function sayHello() {
+            document.writeln("Hello world javascript!");
+            alert("hello world javascript!");
+        }
+        sayHello();
+
+        //匿名函数
+        var sayHelloObject= function(x){
+            document.writeln('<br>');//这一行指使结果分行，另起一行
+            document.writeln("x=",x);
+        };
+        sayHelloObject(13);
+
+       
+       var study_var=function(){
+           var strl="变量名";
+           var num=1.5;
+           age=21;
+           var cars=new Array("A","B","C");
+           document.writeln("<br>"+strl);
+           document.writeln("<br>"+num+"<br>"+age);
+           document.writeln("<br>"+cars);
+
+       }
+       study_var();
+        
+
+       //1到100的累加
+        var sum=function(start,end){
+            var s=0;
+            var i;
+            for(i=start;i<=end;i++){//i++表示i=i+1
+                s=s+i;
+            }
+            document.writeln('<br>'+s);
+        }(1,100);
+
+
+        var sum_while=function(start,end){
+            var s=0;
+            var i=start;
+            while(i<=end){
+                if(i%2==1){
+                    s=s+i;
+                }
+                i++;
+            }
+            document.writeln("<br>"+s);
+        }(1,100);
+
+
+        var for_in=function(arr){
+            for(var each in arr){
+                document.writeln('<br>');
+                document.writeln("arr["+each+"]="+arr[each])
+            }
+        }(new Array("a","test","d",2,4.0,56,[1,2,4,6]))
+
+
+
+
+        var static_person={
+            name:"zhanwenjuan",
+            birth:1999,
+            school:"zjbc",
+            height:1.65,
+            weight:50,
+            score:null
+        }
+
+
+        //添加对象的行为     
+        static_person.eat=function(){
+            alert("object can eat");
+        }
+
+        static_person.country="china";//添加对象的属性
+        static_person.home="anhui";
+        if ('weight' in static_person){
+            document.writeln("<br> object have weight");
+        }else{
+            document.writeln("<br> object have not weight");
+        }
+
+        document.writeln('<br>');
+        document.writeln(static_person.name);
+        document.writeln(static_person.birth);
+        document.writeln('<br>'+static_person.country);
+        document.writeln(static_person.home);
+        static_person.eat();
+
+
+        var person=new Object();
+        person.name="zhanwenjuan";
+        person.eat=function(){
+            document.writeln('<br>');
+            document.writeln('<br>'+person.name ," can eat");
+        }
+        person.eat();
+
+           
+        var function_person=function(name){
+            this.name=name;
+            this.eat=function(){
+                document.writeln('<br>',name," can eat");
+            }
+        }
+
+        p=new function_person("zhangshan");
+        p.eat();
+
+        //map
+        var m=new Map([['zhanwenjuan',90],['zhangsan',70]]);
+        document.writeln('<br>');
+        document.writeln(m.get('zhanwenjuan'));
+        m.delete('zhanwenjuan');
+        document.writeln('<br>');
+        document.writeln(m.get('zhanwenjuan'));
+        m.set('adam',70);
+        document.writeln(m.get('adam'));
+
+        
+    </script>
+    
+</body>
+</html>
+
+           

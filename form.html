@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单</title>
+</head>
+<style type="text/css">
+    body{ background-color: rosybrown;}
+
+</style>
+<body>
+    <form action="#">
+        用户名: <input type="text" value="张三"><br><br>
+        邮箱: <input type="email" placeholder="zhangsan@163.com" required><br><br>
+        密码: <input type="password" size="25"><br><br>
+        性别: <input type="radio" name="sex" id="#" checked="checked">男
+        <input type="radio" name="sex" id="#">女<br><br>
+        年龄: <input type="number" name="1" id="#"><br><br>
+        城市: <br><br>
+        <select name="" id="">
+            <option value="">北京</option>
+            <option value="" selected="selected">杭州</option>
+            <option value="">上海</option>
+        </select> <br><br>
+        爱好: <br><br>
+        <select multiple="multiple" size="3">
+            <option value="">看书</option>
+            <option value="" selected="selected">听音乐</option>
+            <option value="">发呆</option>
+        </select> <br><br>
+        兴趣: <input type="checkbox">唱歌
+        <input type="checkbox"> 跳舞
+        <input type="checkbox"> 游泳<br><br>
+        颜色: <input type="color" value="#ff0000"><br><br>
+        上传图片: <input type="file"><br><br>
+        关键词: <input type="search" name="" id=""><br><br>
+        智商: <input type="range" min="1" max="250"><br><br>
+        自我介绍: <br>
+        <textarea name="introduce" id="" cols="30" rows="10" placeholder="please input your message"></textarea>
+        <br><br>
+        <input type="submit" value="提交">
+        <input type="reset" value="重置">
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>累加器</title>
+</head>
+<body>
+    <input type="number" id="txt_value">
+    <input type="button" value="增加" id="btn_add" >
+    <script>
+        (function(){
+            var x=document.querySelector("#txt_value");
+            var btn=document.querySelector("#btn_add");
+            btn.addEventListener('click',function(e){
+                var now = x.value - 0;
+                now++;
+                x.value = now;
+            })
+        })();
+    </script> 
+    <br>
+    <input type="number" id="txt_num">
+    <input type="button" value="增加" id="bt_add" onclick="inner()" >
+    <script>
+        function inner(){
+            var s=document.getElementById("txt_num");
+            s.value++;
+        }
+    </script>
+</body>
+</html>
