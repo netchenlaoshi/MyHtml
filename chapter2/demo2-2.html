@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用AUgular实现计数器</title>
+</head>
+<body ng-app>
+    <!--ng-app指定angularjs有效范围-->
+    
+    <!-- ng-model将值绑定到html输出控件-->
+    <input type="number" ng-model="value"/>
+    <!-- ng-click 绑定事件-->>
+    <input type="button" ng-click="value=value+1" value="增加"/>
+    <!--引入angular.js文件-->>
+    <script src=../angular.min.js></script>
+</body>
+</html>
