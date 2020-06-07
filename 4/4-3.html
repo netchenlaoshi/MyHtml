@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript依赖注入</title>
+</head>
+<body>
+    <script>
+        //一个注册表里有两个可注入的依赖对象
+        var registry={
+            food:{cake:'蛋糕'},
+            fruit:{apple:'苹果'}
+        };
+        //获取func的参数列表(依赖列表)
+        var getFuncParams=function(func){
+            //使用正则表达式解析源码
+            var matches=func.toString().match(/^function\s*[^\(]*\(\s*([^\)]*)\)/m);
+            if (matches && matches.length>1)
+                return matches[1].replace(/\s+/,'').split(',');
+            return [];
+        }
+        //根据参数列表(依赖列表)填充参数(依赖项)
+        var setFuncParams=function(params){
+            for (var i in params){
+                params[i]=registry[params[i]];
+            }
+            return params;
+        };
+        //注入函数，此处用来模拟注入器的行为
+        function inject(func){
+            var obj={};
+            //通过apply()函数调用func并且把参数列表传递func
+            func.apply(func,setFuncParams(getFuncParams(func)));
+            return obj;
+        }
+        //定义一个函数，声明参数food，容器会根据这个名称在注册表中找到同名的对象
+        //并且注入eat
+        var eat=function(food){
+            //经过注入后，此处的food值为{cake:'蛋糕'}
+            console.log('吃到'+food.cake+'了');
+        }
+        //调用注入方法
+        inject(eat);
+    </script>
+</body>
+</html>

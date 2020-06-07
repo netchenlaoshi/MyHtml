@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用AngularJS实现计数器</title>
+</head>
+<!--ng-app指定AngularJS有效范围-->
+<body ng-app>
+    <!--ng-model将值绑定到HTML输入控件-->
+    <input type="number" ng-model="value"/>
+    <!--ng-click绑定事件-->
+    <input type="button" ng-click="value=value+1" value="增加"/>
+    <!--引入angular.min.js文件-->
+    <script src="lib/angular.min.js"></script>
+</body>
+</html>

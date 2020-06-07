@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng-show和ng-hide</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="MainController">
+            <div style="width: 200px;height: 100px;background: red;" ng-show="myTrue">
+                <p>*ng-show="myTrue"</p>
+            </div>
+            <div style="width: 200px;height: 100px;background: yellow;" ng-show="myFalse">
+                <p>*ng-show="myFalse"</p>
+            </div>
+            <div style="width: 200px;height: 100px;background: blue;" ng-hide="myTrue">
+                <p>*ng-hide="myTrue"</p>
+            </div>
+            <div style="width: 200px;height: 100px;background: green;" ng-hide="myFalse">
+                <p>*ng-hide="myFalse"</p>
+            </div>
+        </div>
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        app.controller('MainController',function($scope){
+            //定义两个boolean类型的属性
+            $scope.myTrue=true;
+            $scope.myFalse=false;
+        });
+    </script>    
+</body>
+</html>

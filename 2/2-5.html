@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS</title>
+</head>
+<body>
+    <!--绑定模块和控制器-->
+    <div ng-app="myApp" ng-controller="MainController">
+        <input ng-model="name">
+        <h1>{{welcome}}</h1>
+        <button ng-click='say()'>登录</button>
+        <p>单击按钮调用作用域中定义的say()函数</p>
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script>
+        //定义模块
+        var app=angular.module('myApp',[]);
+        //定义控制器
+        app.controller('MainController',function($scope){
+            //定义属性name
+            $scope.name="lucy";
+            //定义函数say()
+            $scope.say=function(){
+                $scope.welcome='welcome:'+$scope.name+'!';
+            };
+        });
+    </script>
+</body>
+</html>

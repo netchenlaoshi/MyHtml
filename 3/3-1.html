@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng-bind</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="MainController">
+            <p>*使用插值语法取出data的效果</p>
+            <span>{{data}}</span>
+            <br>
+            <p>*使用ng-bind取出data的效果</p>
+            <span ng-bind="data"></span>
+        </div>
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script>
+        //创建一个AngularJS模块
+        var app=angular.module('app',[]);
+        app.controller('MainController',function($scope){
+            //$scope是AngulsrJS的控制器附带的“数据仓库”
+            $scope.data='this is data';
+        });
+    </script>
+</body>
+</html>

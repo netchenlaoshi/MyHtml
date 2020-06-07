@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块间的相互依赖</title>
+</head>
+<body>
+    <!--绑定demo模块-->
+    <div ng-app="demo">
+        <!--绑定ctrls模块的MainController-->
+        <div ng-controller="MainController">
+            <span>{{name}}</span>
+        </div>
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script>
+        //创建ctrls模块
+        var ctrls=angular.module('ctrls',[]);
+        //在ctrls模块下创建了一个控制器
+        ctrls.controller('MainController',function($scope){
+            $scope.name="张三";
+        });
+        //创建demo模块，并依赖ctrls模块
+        var demo=angular.module('demo',['ctrls']);
+    </script>
+</body>
+</html>

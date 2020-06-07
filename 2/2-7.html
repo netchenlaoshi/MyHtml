@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域的嵌套</title>
+</head>
+<body>
+    <div ng-app="demo">
+        <div ng-controller="MainController">
+            <p>*ng-controller="MainController"作用域显示结果：</p>
+            <!--MainController有效，但是DataController作用域无效-->
+            <span>{{mData}}</span>
+            <span>{{dData}}</span>
+            <div ng-controller="DataController">
+                <p>*ng-controller="DataController"作用域显示结果：</p>
+                <!--MainController有效，DataController有效-->
+                <span>{{mData}}</span>
+                <span>{{dData}}</span>
+            </div>
+        </div>
+        <script src="lib/angular.min.js"></script>
+        <script>
+            var demo=angular.module('demo',[]);
+            //定义MainController控制器
+            demo.controller('MainController',function($scope){
+                $scope.mData="hello MainController";
+            })
+            //定义DataController控制器
+            demo.controller('DataController',function($scope){
+                $scope.dData="hello DataController";
+            })
+        </script>
+    </div>
+</body>
+</html>
