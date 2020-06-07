@@ -6,15 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controller And Module</title>
 </head>
-<body ng-controller="app">
+<body ng-app="app">
     <div ng-controller="mainController">
-    </div>   
-    <script src="auglar\chapter2\lib\angular.min.js"></script>
+       
+        <input type="text" ng-model="name">
+        <button ng-click="say()">welcome</button>
+        <br>
+        {{welcome}}
+    </div>  
+    <script src="lib\angular.min.js"></script>
     <script>
         var app=angular.module('app',[]);
         app.controller('mainController',function($scope){
-            $scope.name="wangyezheng"
+            $scope.name="wangyezheng";
+            $scope.say=function(){
+                $scope.welcome="欢迎  欢迎"+$scope.name+" !"
+            }
         })
+
+        var demo=angular.module('demo',['app']);
     </script>   
 </body>
 </html>

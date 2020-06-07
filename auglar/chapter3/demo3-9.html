@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-switch</title>
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="mainController">
+        <div ng-switch="name">
+            <div ng-switch-when="张三">
+                this is 张三
+            </div>
+            <div ng-switch-when="张四">
+                this is 张四
+            </div>
+            <div ng-switch-default>
+                找不到此人
+            </div>
+        </div>
+    </div>
+</div>          
+<script src="lib\angular.min.js"></script>
+<script>
+    var app=angular.module('app',[])
+    app.controller('MainController',function($scope){
+        $scope.name="李四";
+                  
+    });
+</script>   
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpzuoyongyort" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS作用域</title>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="MainController">
+    <input ng-model="name">
+    <h1>{{welcome}}</h1>
+    <button ng-click='say()'>登录</button>
+    <p>单击按钮调用作用域中定义的say()函数</p></div>
+ 
+<script src="lib\angular.min.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('MainController',function($scope){
+        $scope.name="王业政";
+        $scope.say=function(){
+            $scope.welcome='welcome:'+$scope.name+'!';
+        };
+    });
+</script>
+</body>
+</html>

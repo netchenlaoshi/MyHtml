@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>track by</title>
+</head>
+<body>
+<div ng-app="demo">
+    <div ng-controller="MainController">
+        <table style="border: solid 1px;">
+            <tr>
+                <th>姓名</th>
+                <th>姓别</th>
+                <th>年龄</th>
+            </tr>
+            <tr ng-repeat="(key,value) in users">
+                <td>{{key}}</td>
+                <td>{{value.sex}}</td>
+                <td>{{value.age}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script src="lib\angular.min.js"></script>
+<script>
+    var demo=angular.module('demo',[]);
+    demo.controller('MainController',function($scope){
+        $scope.numbers=[1,1,4,2,5];
+  
+                  
+    });
+</script>   
+</body>
+</html>    

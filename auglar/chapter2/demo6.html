@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root scope</title>
+</head>
+<body ng-app="app">
+    <p>demo scope outcome</p>
+    <span>{{rData}}</span>
+    <span>{{data}}</span>
+    <div ng-controller="MainController">
+        <P>MainController scope outcome</P>
+        <span>{{rData}}</span>
+        <span>{{data}}</span>
+    </div>  
+    <script src="lib\angular.min.js"></script>
+    <script>
+        var app=angular.module('demo',[]);
+        demo.controller('MainController',function($scope, $rootScope){
+            $scope.data="hello scope";
+            $rootScope.rData= 'hello root scope';
+        })
+    </script>   
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat</title>
+</head>
+<body>
+<div ng-app="demo">
+    <div ng-controller="mainController">
+<script src="lib\angular.min.js"></script>
+<script>
+    var demo=angular.module('demo',[]);
+    demo.controller('MainController',function($scope){
+        $scope.users={
+            "张三": {age:24,sex:"男"},
+            "李四":{age:13,sex:"女"},
+            "王五":{age:38,sex:"男"},
+            "赵六":{age:55,sex:"女"}
+        };
+                  
+    });
+</script>   
+</body>
+</html>
