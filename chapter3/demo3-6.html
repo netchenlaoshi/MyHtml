@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng-click</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="MainController">
+            
+            <span ng-bind="message"></span>
+        <br/>
+        <button ng-click="clickHandler()"onclick="onclickHandler()">按钮</button>
+        </div>
+    </div>
+    <script src="lib/angular.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        app.controller('MainController',function($scope){
+            $scope.message="等待操作";
+            $scope.clickHandler=function(){
+                $scope.message='ng-click事件被触发'
+            }
+        });
+        function onclickHandler(){
+            console.log("onclick 事件被处罚");
+        }
+    </script>
+</body>
+</html>
