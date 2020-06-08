@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controller And Module</title>
+</head>
+
+<body ng-app="demo">
+    <div ng-controller="mainController">
+
+        <input type="text" ng-model="name">
+        <button ng-click="say()">Welcome</button>
+                <br>
+                {{welcome}}
+
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('mainController', function ($scope) {
+            $scope.name = "yingkonglai";
+            $scope.say=function(){
+                $scope.welcome="欢迎 欢迎"+$scope.name+" !"
+            }
+        })
+
+        var demo=angular.module('demo',['app'])
+    </script>
+
+
+</body>
+
+</html>
