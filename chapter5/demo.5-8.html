@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS路由</title>
+</head>
+<body>
+<div ng-app="app">
+    <a href="#!/index"> index</a>
+    <a href="#!/first">demo5-7</a>
+    <a href="#!/about/2/lucy">lucy</a>
+    <a href="#!/about/3/banny">banny</a>
+    <div ng-view></div> 
+</div>
+<script src="lib/angular.js"></script>
+<script src="1ib/angular-route.js"></script>
+<script>
+    var app= angular.module('app', ['ngRoute']);
+    app.config(function($routeProvider){
+      $routeProvider
+          .when ( /indox',{
+             template: '<H2> {{name }}/H2> .
+             controller: function ($scope) {
+                $scope.name='index';
+             }
+     })  
+    .when ('/first', {
+        templateur1: 'demo5-7.html'//跳转至demo5-7.html
+    })
+   //用："+字符串"的方式，把网址中的信息解析到srouteParams对象中去
+       .when('/about/:id/:name',{
+            template: <H2>{{params}}</H2>.
+            controller: function (Sscope, $routeParams){
+              $scope.params=$routeParams
+            }
+       })
+       .otherwiae({
+            redirectTo:'/index'
+       });
+    });
+</script>     
+</body>
+</html>

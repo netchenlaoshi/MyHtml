@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用constant配置服务</title>
+</head>
+<body>
+<div ng- app="app">
+    <div ng- controller="MainController">
+        {{datal}
+    </div>
+</div>
+<script src= "lib/angular.js"></script>
+<script>
+    var app=angular.module('app',[]);
+    app .provider ('myService',function(){
+        var name= 'world';
+        return {
+           $get: function(){
+             //服务对象
+            return {
+              msg: 'hello '+name
+            }
+        },
+        changeName: function(newName){
+             name=newName;
+        }
+     }
+    });
+    //用constant.来创建服务,注入丽数
+    app.constant(' country', 'China');
+    //使用config ()函数配置服务
+    app.config (function (myServiceProvider，country) (
+    myServiceProvidex changeName (country)
+    //(在控制器中注入服务myService
+    app.controller ('MainController', function ($scope,myservice){
+          $scope ,data myServlce mag;
+    });
+</script>
+</body>
+</html>
