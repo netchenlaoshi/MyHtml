@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$location 服务</title>
+</head>
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="MainController"
+        style="background-color: darkseagreen;padding: 15px;">
+          <b>{{host_Url}}</b><br><br>
+          <b>{{port_Url}}</b><br><br>
+          <b>{{protocol_Url}}</b><br><br>
+          <b>{{hash_Url}}</b><br><br>
+          <b>{{path_Url}}</b><br><br>
+          <b>{{search_Url}}</b><br><br>
+          <b>{{url_Url}}</b><br><br>
+          <b>{{abs_Url}}</b>
+          </table>
+        </div>
+    </div>
+    <script src="lib/angular.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('MainController',function($scope, $location){
+            $scope.host_Url=$location.host();
+            $scope.port_Url=$location.port();
+            $scope.protocol_Url=$location.protocol();
+            $scope.hash_Url=$location.hash('myhash').hash();
+            $scope.path_Url=$location.path('/newPath').path();
+            $scope.search_Url=$location.search('name','lily').search();
+            $scope.url_Url=$location.url();
+            $scope.abs_Url=$location.absUrl();
+        });
+    </script>
+</body>
+</html>
