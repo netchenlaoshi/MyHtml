@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块和控制器</title>
+</head>
+<!--指定AngularJS框架在哪个区域执行-->
+<body ng-app="ng-app">
+    <div ng-controller="mainController">
+        <span>{{name}}</span>
+    </div>  
+    <script src="lib\angular.js"></script>
+    <script>
+            //创建AnguarJS的模块
+            //第1个参数：AnguarJS的模块名称
+            //第2个参数：该模块所依赖的其他模块
+            var app=angular.model('app',[]);
+            //创建Angular.JS控制器
+            //第1个参数：控制器的名称
+            //第2个参数：控制器的回调函数
+            app.controller('mainController',function($scope){
+                //$scope对象是我们创建出来的AngulaJS数据仓库
+                $scope.name="我是属性name的值"；
+            });
+    </script>
+</body>
+</html>
