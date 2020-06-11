@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$location服务</title>
+</head>
+<body>
+<div ng-apps="myApp">
+    <div ng-controller= "MainController"
+        style="background-color:darkseagreen; padding: 15px">
+        *1.调用"host () "返回结果：
+        <b> {{host Url}}</b> <br> <br>
+        *2.调用“port ()"返回结果：
+        <b>{{port Url}}</b><br><br>
+        *3.调用“protocol () "返回结果：
+        <b> {{protocol Url}}</b> <br> <br>
+        *4.调用“hash () "返回结果： 
+        <b> {{hash Ur1}}</b> <br><br>
+        *5。调用“path ()"返回结果：
+        <b> {{path Ur1}}</b> <br><br>
+        *6.调用“search ()"返回结果：
+        <b> {{search Url}}</b><br><br>
+        *7.调用“url ()"返回结果：
+        <b> {{url Ur1}}</b> <br><br>
+        *8,调用“absUrl () ",返回结果：
+        <b>{{abs Ur}}</b>
+     </table>
+    </div>
+</div>
+<script src="../../angular.js"></scrtpt>
+<script>
+    var app=angular.module('myApp', []);
+    //将$locatlon服务注入控制器
+    app.controllerl('MainController', function($scope, $Location){
+        $scope.host_Url=$location.host();
+        $scope.port_Url= $location.port();
+        $scope.protocol_Ur1=$location.protocol() ;
+        //传入myhash作为hash值
+        $scope.hash_Url=$location.hash('myhash').hash() ;
+        //传入/newPath作为子路径
+        $scope .path Ur1= $location. path(' /newPath') ,path();
+        //传入'name', '1i1y'作为参数
+        $scope.search Url= $location.search('name'，'lily') . search() ;
+        $scope.ur1_ Ur1= $location.ur1() ;
+        $scope. abs Ur1= slocation. absUr1() ;
+     });
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<IDOCTYPE html>
+<htm1 lang= "en">
+<head>
+    <meta charset="uTF- 8">
+    <title>使用Provider创建服务</title>
+</head>
+<body>
+<div ng-app= "app">
+   <div ng-controller= "Ma inController">
+      {{data}}
+    </div>
+</div>
+<script src="../..//angular.js"></script>
+<script>
+    var app=angular.module('app',[]);
+    //定义包含$get函数的函数myFunction
+    var myFunction= function () {
+        var name= 'world';
+       return {
+          $get: function () {
+             //服务对象
+            return {
+               msg: hello + name
+            }
+          },
+          changeName: function (newName) {
+              name=newName;
+          }
+       }
+
+     }
+      //使用provider()函数创建服务
+       app.provider('myService',myFunction);
+       //使用config()函数配置服务
+        app.config(function(myServiceProvider){
+        myServiceProvider.changename(张三)；
+      })；
+       //在控制器中注入服务myService
+      app.controller('MainController',function($scope,myService){
+          $scope.data=myService.msg;
+       });
+</script>
+</body>       
+</htm1>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$watch监听$localtion</title>
+</head>
+<body>
+<div ng-app="app">
+    <div ng-controllers="MainController">
+    <a href="#!/all">全部</a>
+    <a href="#/invite">邀请中</a>
+    <a href="#/accept">已接受</a>
+    <a href="#/refuse">已拒绝</a>
+    </div>
+</div>
+<script src="../../angular.js"></script>
+<script>
+    var app=angular.module ('app', []);
+    app.controlier('Maincontzo1ler', function ($scope, $location){
+       //将$1ocation赋值给作用域的locat对象
+       $scope.locat=$location;
+       //$watch监听的是Angularjs表达式
+       Sacope. $watch ('1ocat. path () ', function (newValue, oldvalue){
+       conaole. 1og (newvalue);
+       });
+    })
+</script>     
+</body>
+</html>

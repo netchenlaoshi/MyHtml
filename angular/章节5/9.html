@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$http服务</title>
+</head>
+<body>
+<div ng-app="app">
+    <div ng-controller="MainController">
+        {{msg}}
+    </div>
+</div>
+<script src="../../angular.min.js.js"></script>
+<script>
+    var app=angular.module ('app', []);
+    apo.controller('MainController',function ($scope, $http){
+       $http ({
+          method: 'GET'
+          ur1: 'data.json'
+        }).then(function successCallback(response){
+           $scope.msg=response.data.msg;
+        },function errorCallback (response) {
+           console,1og (response.data)
+           console.1og (response.status)
+        });
+    });
+</script>      
+</body>
+</html>
