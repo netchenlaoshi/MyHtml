@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$window服务</title>
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="MainController">
+        <button ng-click="displayAlert('我被单击了')">单机我</button>     
+    </div>
+</div>
+<script src="lib\angular.min.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('MainController',function($scope,$location){
+        $scope.host_Url=$location.host();
+        $scope.port_Url=$location.port();
+        $scope.protocol_Url=$location.protocol();
+        $scope.hash_Url=$location.hash('myhash').hash();
+        $scope.path_Url=$location.path('/newPath').path();
+        $scope.search_Url=$location.search('name','lily').search();
+        $scope.url_Url=$location.url();
+        $scope.abs_Url=$location.absUrl();
+
+    });
+    
+</script>   
+</body>
+</html>

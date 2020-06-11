@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$location服务</title>
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="MainController" 
+        style="background-color: brown;padding: 15px;">
+        * 1.调用host()"返回结果：
+        <b>{{host_Url}}</b><br><br>
+        * 2.调用post()"返回结果：
+        <b>{{post_Url}}</b><br><br>
+        * 3.调用protocol()"返回结果：
+        <b>{{protocol_Url}}</b><br><br>
+        * 4.调用hash()"返回结果：
+        <b>{{hash_Url}}</b><br><br>
+        * 5.调用path()"返回结果：
+        <b>{{path_Url}}</b><br><br>
+        * 6.调用search()"返回结果：
+        <b>{{search_Url}}</b><br><br>
+        * 7.调用url()"返回结果：
+        <b>{{url_Url}}</b><br><br>
+        * 8.调用absUrl()"返回结果：
+        <b>{{abs_Url}}</b><br><br>
+        </table>
+    </div>
+</div>
+<script src="lib\angular.min.js"></script>
+<script>
+    var app=angular.module('app',[]);
+    app.provider('myService',function(){
+       var name='world';
+       return{
+           $get:function(){
+               return{
+                   msg:'hello'+name
+               }
+           },
+           changeName:function(newName){
+               name=newName;
+           }
+       }
+    });
+    app.constant('country','China');
+    app.config(function(myServiceProvider,country){
+            myServiceProvider.changeName(country)
+    });
+    app.controller('MainController',function($scope,myService){
+        $scope.data=myService.msg;
+    });
+    
+</script>   
+</body>
+</html>

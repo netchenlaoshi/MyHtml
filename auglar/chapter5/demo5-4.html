@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用constant创建服务</title>
+</head>
+<body>
+<div ng-app="app">
+    <div ng-controller="MainController">     
+        {{data}}
+    </div>
+</div>
+<script src="lib\angular.min.js"></script>
+<script>
+    var app=angular.module('app',[]);
+    app.provider('myService',function(){
+       var name='world';
+       return{
+           $get:function(){
+               return{
+                   msg:'hello'+name
+               }
+           },
+           changeName:function(newName){
+               name=newName;
+           }
+       }
+    });
+    app.constant('country','China');
+    app.config(function(myServiceProvider,country){
+            myServiceProvider.changeName(country)
+    });
+    app.controller('MainController',function($scope,myService){
+        $scope.data=myService.msg;
+    });
+    
+</script>   
+</body>
+</html>
