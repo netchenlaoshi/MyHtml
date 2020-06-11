@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS路由</title>
+</head>
+<body>
+    <div ng-app="app">
+        <a href="#!/index">index</a>
+        <a href="#!/first">demo5-7</a>
+        <a href="#!/about/2/dingzexin">dingzexin</a>
+        <a href="#!/about/3/banny">banny</a>
+        <div ng-view></div>
+    </div>
+    <script src="E:\Gitqd\net19049\hezuo\MyHtml\angular\chapter2\lib\angular.min.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script>
+        var app=angular.module('app',['ngRoute']);
+        app.config(function($routeProvider){
+            $routeProvider
+                .when('/index',{
+                    template:'<H2>{{name}}</H2>',
+                    controller:function($scope){
+                        $scope.name='index';
+                    }
+                })
+                .when('/first',{
+                    templateUrl:'demo5-7.html'
+                })
+                .when('/about/:id/:name',{
+                    template:'<H2>{{params}}</H2>',
+                    controller:function($scope,$routeParams){
+                        $scope.params=$routeParams
+                    }
+                })
+                .otherwise({
+                    redirectTo:'/index'
+                });
+        });
+    </script>
+</body>
+</html>

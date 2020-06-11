@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$http服务</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="MainController">
+            {{msg}}
+        </div>
+    </div>
+    <script src="E:\Gitqd\net19049\hezuo\MyHtml\angular\chapter2\lib\angular.min.js"></script>
+    <script>
+                var app = angular.module('app', []);
+                app.controller('MainController',function($scope,$http){
+                    $http({
+                        method:'GET',
+                        url:'./json/data.json'
+                    }).then(function successCallback(response){
+                        $scope.msg=response.data.msg;
+                    },function errorCallback(response){
+                        console.log(response.data)
+                        console.log(response.status)
+                    });
+                });
+    </script>
+</body>
+</html>

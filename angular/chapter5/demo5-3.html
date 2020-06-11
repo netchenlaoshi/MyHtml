@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用Service创建服务</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="MainController">
+            <input type="text" ng-modle="useName">
+            <input type="button" ng-click="say(useName)" value="按钮"/>
+        </div>
+    </div>
+    <script src="E:\Gitqd\net19049\hezuo\MyHtml\angular\chapter2\lib\angular.min.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        app.service('myService',function(){
+            this.sayHello=function(name){
+                alert('hello'+name)
+            }
+        });
+        app.controller('MainController',function($scope,myService){
+            $scope.say=function(name){
+                myService.sayHello(name);
+            }
+        });
+    </script>
+</body>
+</html>

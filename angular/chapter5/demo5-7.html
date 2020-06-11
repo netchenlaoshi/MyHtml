@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$watch 监听$location</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="MainController">
+            <a href="#!/all">全部</a>
+            <a href="#!/invite">邀请中</a>
+            <a href="#!/accept">已接受</a>
+            <a href="#!/refuse">已拒绝</a>
+        </div>
+    </div>
+    <script src="E:\Gitqd\net19049\hezuo\MyHtml\angular\chapter2\lib\angular.min.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        app.controller('MainController',function($scope,$location){
+            $scope.locat=$location;
+            $scope.$watch('locat.path()',function(newValue,oldValue){
+                console.log(newValue);
+            });
+        })
+    </script>
+</body>
+</html>
