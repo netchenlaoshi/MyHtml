@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用Provider创建服务</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="MainController">
+            {{data}}
+        </div>
+    </div>    
+    <script stc="lib/angular.min.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        var myFunction=function () {
+            var name='world';
+            return {
+                $get: function () {
+                    return {
+                        msg: 'hello '+name
+                    }
+                },
+                changeName: function (newName) {
+                    name=newName;
+                }
+            }
+        }
+        app.provider ('myService',myFunction);
+        app.config(function (myServiceProvider) {
+            myServiceProvider.changeName('张三');
+        });
+        app.controller('MainController',function ($scope,myService){
+            $scope.data=myService.msg;
+        });   
+        
+
+    </script>    
+</body>
+</html>
