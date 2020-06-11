@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$location服务</title>
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="MainController"
+        style="background-color:darkseagreen;padding:15px">
+        *1.调用"host()"返回结果:
+        <b>{{host_Url}}</b><br><br>
+        *2.调用"port()"返回结果:
+        <b>{{port_Url}}</b><br><br>
+        *3.调用"protocol()"返回结果:
+        <b>{{protocol_Url}}</b><br><br>
+        *4.调用"hash()"返回结果:
+        <b>{{hash_Url}}</b><br><br>
+        *5.调用"path()"返回结果:
+        <b>{{path_Url}}</b><br><br>
+        *6.调用"search()"返回结果:
+        <b>{{search_Url}}</b><br><br>
+        *7.调用"url()"返回结果:
+        <b>{{url_Url}}</b><br><br>
+        *8.调用"absUrl()",返回结果:
+        <b>{{abs_Url}}</b>
+        </table>
+    </div>
+</div>
+<script src="lib/angular.min.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('MainController',function($scope,$location){
+        $scope.host_Url=$location.host();
+        $scope.port_Url=$location.port();
+        $scope.protocol_Url=$location.protocol();
+        $scope.hash_Url=$location.hash('myhash').hash();
+        $scope.path_Url=$location.path('/newPath').path();
+        $scope.search_Url=$location.search('name','lily').search();
+        $scope.url_Url=$location.url();
+        $scope.abs_Url=$location.absUrl();
+    });
+</script>
+</body>
+</html>
