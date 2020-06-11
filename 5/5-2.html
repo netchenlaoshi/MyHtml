@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用Factory创建服务</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="MainController">
+            {{data}}
+        </div>
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        //定义函数，返回一个对象
+        var myFunction=function(){
+            return{
+                msg:"this is data"
+            }
+        }
+        //在app模块下创建一个服务，实例化服务对象
+        app.factory('myService',myFunction);
+        //在app模块下创建一个控制器，并在控制器的工厂函数中注入服务
+        app.controller('MainController',function($scope,myService){
+            $scope.data=myService.msg;
+        });
+    </script>
+</body>
+</html>
