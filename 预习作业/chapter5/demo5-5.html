@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$window服务</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="maincontroller">
+            <button ng-click="displayAlert('我被单击了')">单击我</button>
+        </div>
+    </div>
+<script src="../../angularjs/lib/angular.min.js"></script>
+<script>
+    var app=angular.module("app",[]);
+    app.controller("maincontroller",function($scope,$window){
+        $scope.displayAlert=function(msg){
+            $window.alert(msg);
+        }
+    });
+</script>
+    
+</body>
+</html>

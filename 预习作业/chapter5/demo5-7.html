@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$watch监听$location</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="maincontroller">
+            <a href="#!/all">全部</a>
+            <a href="#!/invite">邀请中</a>
+            <a href="#!/accept">已接受</a>
+            <a href="#!/refuse">已拒绝</a>
+
+
+
+        </div>
+    </div>
+    <script src="../../angularjs/lib/angular.min.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        app.controller('maincontroller',function($scope,$location){
+            $scope.locat=$location;
+            $scope.$watch('locat.path()',function(newvalue,oldvalue){
+                console.log(newvalue);
+            });
+        })
+    </script>
+</body>
+</html>
