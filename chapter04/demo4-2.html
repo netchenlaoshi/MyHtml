@@ -8,23 +8,23 @@
 </head>
 
 <body>
-    <div ng-app="demo">
-        <div ng-controller="MainController">
+<div ng-app="demo">
+    <div ng-controller="MainController">
             <input type="number" ng-model="data">
             <button onclick="plusOne()">加1</button>
-        </div>
     </div>
-    <script src="lib/angular.min.js"></script>
-    <script>
+</div>
+<script src="lib/angular.min.js"></script>
+<script>
         var demo = angular.module('demo', []);
         demo.controller('MainController', function ($rootScope, $scope) {
-            $scope.data = 1;
-            window.scope = $scope;
+        $scope.data = 1;
+        window.scope = $scope;
         });
         function plusOne() {
             window.scope.data+=1;
         }
-    </script>
+</script>
 </body>
 
 </html>
