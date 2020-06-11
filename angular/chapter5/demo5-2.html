@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用Factory创建服务</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="MainController">
+            {{data}}
+        </div>
+    </div>
+    <script src="C:\project\myhtml\zuoye\myhtml\lib\chapter2\angular.min.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        var myFunction=function(){
+            return{
+                msg:"this is data"
+            }
+        }
+        app.factory('myService',myFunction);
+        app.controller('MainController',function($scope,myService){
+            $scope.data=myService.msg;
+        });
+    </script>
+</body>
+</html>

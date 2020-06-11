@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$window服务</title>
+</head>
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="MainController">
+            <button ng-click="displayAlert('我被单击了')">单击我</button>
+        </div>
+    </div>
+    <script src="C:\project\myhtml\zuoye\myhtml\lib\chapter2\angular.min.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('MainController',function($scope,$window){
+            $scope.displayAlert=function(msg){
+                $window.alert(msg);
+            }
+        });
+    </script>
+</body>
+</html>
