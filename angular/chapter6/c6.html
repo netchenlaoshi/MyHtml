@@ -1,0 +1,19 @@
+ng-click="order()"
+$scope.order = function (){
+modelService.add(Info.name, Info.sales);
+}
+model.factory('modelService', function () {
+    var projectList = {
+        list: [],
+        add: function (name, sales) {
+        var project = new project(name, sales);
+        this.list.push(project);
+        $scope.projects = modelService.getList(state);
+}
+
+<tr ng-repeat="project in projects">
+                            <td>{{$index+1}}</td>
+                            <td>{{project.name}}</td>
+                            <td>{{project.sales}}</td>
+                            <td>{{project.state}}</td>
+</tr>
