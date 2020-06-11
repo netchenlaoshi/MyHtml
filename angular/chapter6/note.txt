@@ -1,0 +1,19 @@
+ng-click="invite()"
+ $scope.invite = function () {
+     modelService.add(guestInfo.name, guestInfo.phone);
+ }
+ model.factory('modelService', function () {
+    var guestList = {
+        list: [],
+        add: function (name, phone) {
+        var guest = new Guest(name, phone);
+            this.list.push(guest);
+            $scope.guests = modelService.getList(state);
+            })
+
+<tr ng-repeat="guest in guests">
+    <td>{{$index+1}}</td>
+    <td>{{guest.name}}</td>
+    <td>{{guest.phone}}</td>
+    <td>{{guest.state}}</td>
+</tr>
