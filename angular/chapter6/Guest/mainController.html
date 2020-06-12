@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ng-blind</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="MainController">
+            
+            <div style="width: 200px; height:100px; background:red"
+                ng-show="myTrue">
+                <p>*ng-show="myTrue"</ng-show></p>
+            </div>
+            <div style="width: 200px; height:100px; background:yellow"
+                ng-show="myTrue">
+                <p>*ng-show="myFalse"</p>
+            </div>
+
+            <div style="width: 200px; height:100px; background:blue"
+                ng-hide="myTrue">
+                <p>*ng-show="myTrue"</ng-show></p>
+            </div>
+            <div style="width: 200px; height:100px; background:green"
+                ng-hide="myTrue">
+                <p>*ng-show="myFalse"</p>
+            </div>
+
+            <p>*使用插值语法取出data的效果</p>
+            <span>{{data}}</span>
+            <br>
+            <p>*使用ng-blind取出data的效果</p>
+            <span ng-blind="data"></span>
+
+            <form action="">
+                <input name="id1" type="text" ng-model="text" ng-readonly="boolean">
+                <br>
+                <input name="id2" type="text" ng-model="text" ng-disabled="boolean">
+                <br>
+                <br>
+                <input type="submit" value="提交">
+            </form>
+
+            <table style="border: solid 1px">
+                    <tr>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>年龄</th>
+                        <th>相关信息</th>
+                    </tr>
+                    <tr ng-repeat="item in users">
+                        <td>{{item.name}}</td>
+                        <td>{{item.sex}}</td>
+                        <td>{{item.age}}</td>
+                        <td>index:{{$index}},first:{{$first}},last:{{$last}},
+                            middle:{{$middle}},even:{{$even}},odd:{{$odd}}
+                        </td>
+                    </tr>
+                    <tr>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>年龄</th>
+                            
+                        </tr>
+                    <tr ng-repeat="(key,value) in users">
+                        <td>{{key}}</td>
+                        <td>{{value.sex}}</td>
+                        <td>{{value.age}}</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr ng-repeat="item in numbers track by $index">
+                        <td>{{item}}</td>
+                        <td>$index:{{$index}}</td>
+                    </tr>
+                </table>
+
+            <span>{{name}}</span>
+
+        </div>
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script>
+        var app=angular.module('app',[]);
+        app.controller('MainController',function ($scope){
+           
+            $scope.data='this is data';
+            $scope.myTrue=true;
+            $scope.myFalse=false;
+            $scope.text='some text';
+            $scope.boolean=true;
+            $scope.users=[
+            {name:'张三',sex:'男',age:24},
+            {name:'李四',sex:'女',age:13},
+            {name:'王五',sex:'男',age:38},
+            {name:'赵六',sex:'女',age:55}
+            ]
+            $scope.numbers=[1,6,3,7,5]
+            
+
+        });
+        var ctrls=angular.module('ctrls',[]);
+        ctrls.controller('MainController',function ($scope){
+            $scope.name='张三';
+        });
+        var app=angular.module('app',['ctrls']);
+        
+    </script>
+</body>
+</html>
