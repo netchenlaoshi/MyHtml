@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>使用Provider创建服务</title>
+    <title>使用Factory创建服务</title>
 </head>
 <body>
     <div ng-app="app">
@@ -15,25 +15,14 @@
     <script>
         var app=angular.module('app',[]);
         var myFunction=function(){
-            var name='world';
             return{
-                $get:function(){
-                    return{
-                        msg:'hello'+name
-                    }
-                },
-                changeName:function (newName) {
-                    name=newName;
-                }
+                msg:"this is data"
             }
         }
-        app.provider('myService',myFunction);
-        app.config(function(myServiceProvider){
-            myServiceProvider.changeName('张三');
-        })
+        app.factory('myService',myFunction);
         app.controller('MainController',function($scope,myService){
             $scope.data=myService.msg;
-        })
+        });
     </script>
 </body>
 </html>
