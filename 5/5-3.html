@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用Factory</title>
+</head>
+<body>
+<div ng-app="app">
+    <div ng-controller="MainController">
+        <input type="text" ng-model="userName">
+        <input type="button" ng-click="say(userName)"value="按钮"/>
+    </div>
+</div>    
+<script src="lib/angular.min.js"></script>
+<script>
+    var app=angular.module('app',[]);
+     //用service 来创建服务，注构造函数
+    app.service('myService',function(){
+        this.sayHello=function(name){
+            alert('hello'+name)
+        }
+    });
+    //将服务myService注入控制器
+    app.controller('MainController',function($scope,myService){
+        //在控制器中定义函数，在函数内部调用服务的sayHello()函数
+        $scope.say=function(name){
+            myService.sayHello(name);
+        }
+    });
+</script>
+</body>
+</html>
