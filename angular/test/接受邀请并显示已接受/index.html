@@ -13,6 +13,7 @@
         <button ng-click="invite()">邀请</button>
         <div style="padding-top: 30px; padding-bottom: 30px;">
             <a class="col-sm-2 btn btn-success btn-xs" href="#!/accept">显示已接受</a>
+            <a class="col-sm-2 btn btn-success btn-xs" href="#!/all">显示全部</a>
         </div>
         <br>
         {{guestInfo}}
@@ -62,6 +63,9 @@
         $scope.location = $location;
         $scope.$watch('location.path()', function (newValue) {
             switch (newValue) {
+                case '/all':
+                    state = Guest.ALL;
+                    break;
                 case '/accept':
                     state = Guest.ACCEPT;
                     break;
