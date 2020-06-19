@@ -2,11 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$http服务</title>
 </head>
 <body>
-    <iframe src="./data.json" frameborder="0"></iframe>
     <div ng-app="app">
         <div ng-controller='maincontroller'>
             {{msg}}
@@ -18,9 +16,9 @@
         app.controller('maincontroller',function($scope,$http){
             $http({
                 method:'get',
-                url:'/data.json'
+                url:'file:///D:/作业/MyHtml/预习作业/chapter5/data.json'
 
-            }).then(function succseeCallback(response){
+            }).then(function successCallback(response){
                 $scope.msg=response.data.msg;
                 
             },function errorCallback(response){
