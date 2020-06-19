@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>邀请名单</title>
+</head>
+<style>
+    body {
+        padding-top: 50px;
+    }
+</style>
+
+<body ng-app="app">
+    <div  class="container" style="background-color: #edbc80;">
+        <div ng-controller="mainController">
+
+            <div class="row" style="padding-top: 10px;">
+                <h1 class="m-auto">邀请名单</h1>
+            </div>
+
+            <div class="row" style="padding-top: 30px;">
+                <div class="col-sm-3">
+                    <div class="input-group input-group-lg">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-lg">姓名</span>
+                        </div>
+                        <input type="text" ng-model="guestInfo.name" class="form-control" placeholder="输入姓名"
+                            aria-describedby="inputGroup-sizing-lg">
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="input-group input-group-lg">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-lg">电话</span>
+                        </div>
+                        <input type="text" ng-model="guestInfo.phone" class="form-control" placeholder="输入电话"
+                            aria-describedby="inputGroup-sizing-lg">
+                    </div>
+                </div>
+                <div>
+                    <button ng-click="invite()" class="btn btn-success">邀请</button>
+                </div>
+            </div>
+
+            <div style="padding-top: 30px; padding-bottom: 30px;">
+                <a class="col-sm-2 btn btn-success btn-xs" href="#!/all">显示全部</a>
+                <a class="col-sm-2 btn btn-success btn-xs" href="#!/invite">显示邀请中</a>
+                <a class="col-sm-2 btn btn-success btn-xs" href="#!/accept">显示已接受</a>
+                <a class="col-sm-2 btn btn-success btn-xs" href="#!/refuse">显示已拒绝</a>
+            </div>
+
+            <div class="row" style="padding:15px">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">编号</th>
+                            <th scope="col">嘉宾姓名</th>
+                            <th scope="col">嘉宾电话</th>
+                            <th scope="col">受邀电话</th>
+                            <th scope="col">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="guest in guests">
+                            <td>{{$index+1}}</td>
+                            <td>{{guest.name}}</td>
+                            <td>{{guest.phone}}</td>
+                            <td>{{guest.state}}</td>
+                            <td>
+                                <button ng-if="guest.state=='邀请中'" ng-click="guest.accept()"
+                                    class="btn btn-xs btn-success">接受邀请</button>
+                                <button ng-if="guest.state=='邀请中'" ng-click="guest.refuse()"
+                                    class="btn btn-xs btn-danger">拒绝邀请</button>
+                                <button ng-click="remove(guest)" class="btn btn-xs btn-info">删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="lib/angular.min.js"></script>
+    <script src="js/ModelService.js"></script>
+    <script>
+        var app = angular.module('app', ['nameList.model']);
+        app.controller('mainController', function ($scope, $location, modelService){
+            var state = Guest.ALL;
+            var guestInfo = $scope.guestInfo = {
+                name: '',
+                phone: ''
+            };
+
+            $scope.invite = function () {
+                var msg = modelService.add(guestInfo.name, guestInfo.phone);
+                guestInfo.name = '';
+                guestInfo.phone = '';
+                switch (msg.code) {
+                    case 0:
+                        $scope.guests = modelService.getList(state);
+                        break;
+                    case 1:
+                        alert("请输入正确的姓名和电话。");
+                        break;
+                    case 2:
+                        alert("嘉宾信息有重复，请检查");
+                        break;
+                }
+            };
+
+            $scope.remove = function (guest) {
+                modelService.remove(guest);
+                $scope.guests = modelService.getList(state);
+            }
+
+            $scope.location = $location;
+            $scope.$watch('location.path()', function (newValue) {
+                switch (newValue) {
+                    case '/all':
+                        state = Guest.ALL;
+                        break;
+                    case '/invite':
+                        state = Guest.INVITE;
+                        break;
+                    case '/accept':
+                        state = Guest.ACCEPT;
+                        break;
+                    case '/refuse':
+                        state = Guest.REFUSE;
+                        break;
+                }
+                $scope.guests = modelService.getList(state);
+            })
+
+        })
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
