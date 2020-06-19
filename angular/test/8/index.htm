@@ -13,7 +13,10 @@
         <input type="text" ng-model="guestInfo.phone" placeholder="输入电话">
         <button ng-click="invite()">邀请</button>
         <div style="padding-top: 30px; padding-bottom: 30px;">
+
+            <a class="col-sm-2 btn btn-success btn-xs" href="#!/invite">显示邀请中</a>
             <a class="col-sm-2 btn btn-success btn-xs" href="#!/accept">显示已接受</a>
+
         </div>
         <br> {{guestInfo}}
         <div>
@@ -38,7 +41,7 @@
         </div>
     </div>
 
-    <script src="lib/angular.min.js"></script>
+    <script src='lib/angular.min.js'></script>
     <script src="js/ModelService.js"></script>
     <script>
         var app = angular.module('app', ['nameList.model']);
@@ -58,12 +61,23 @@
                         $scope.guests = modelService.getList(state);
                 }
             };
+
+            $scope.remove = function(guest) {
+                modelService.remove(guest);
+                $scope.guests = modelService.getList(state);
+            }
+
             $scope.location = $location;
             $scope.$watch('location.path()', function(newValue) {
                 switch (newValue) {
+
+                    case '/invite':
+                        state = Guest.INVITE;
+                        break;
                     case '/accept':
                         state = Guest.ACCEPT;
                         break;
+
                 }
                 $scope.guests = modelService.getList(state);
             })
