@@ -29,11 +29,12 @@ model.factory('modelService', function() {
 
         getList: function () {
                 return this.list.filter(function(){
-                   return true;
-                })
-                return this.list.filter(function(guest){
-                    return guest.state==state;
-                })
+                    return true;
+                 })
+                 return this.list.filter(function(guest){
+                     return guest.state==state;
+                 })
+ 
         }
     }
     return guestList;
