@@ -19,7 +19,7 @@
         <script>
                 var app = angular.module('app', []);
                 app.controller('MainController',function($scope,$location){
-                    $scope.locat=$location;
+                    $scope.location=$location;
                     $scope.$watch('local.path()',function(newValue,oldValue){
                         console.log(newValue);
                     });
