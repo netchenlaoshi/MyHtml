@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyGuest</title>
+</head>
+
+<body ng-app="app">
+    <div ng-controller="mainController">
+        <input type="text" ng-model="guestInfo.name" placeholder="输入姓名">
+        <input type="text" ng-model="guestInfo.phone" placeholder="输入电话">
+        <button ng-click="invite()">邀请</button>
+        <br>
+        {{guestInfo}}
+        <div>
+            <table>
+                <thead>
+                    <th>名字</th>
+                    <th>电话</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="guest in guests">
+                        <td>{{guest.name}}</td>
+                        <td>{{guest.phone}}</td>
+                        <td>{{guest.state}}</td>
+                        <td><button ng-click="remove(guest)" class="btn btn-xs btn-info">删除</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script src="js/ModeService1.js"></script>
+    <script>
+        var app=angular.module('app',['nameList.model']);
+        app.controller('mainController',function($scope,$location,modelService){
+            var state = Guest.ALL;
+            var guestInfo = $scope.guestInfo = {
+                name: '',
+                phone: ''
+            };
+
+            $scope.invite=function(){
+                modelService.add(guestInfo.name,guestInfo.phone);
+                $scope.guests=modelService.getList();
+            }
+            
+            $scope.remove = function (guest) {
+                modelService.remove(guest);
+                $scope.guests = modelService.getList(state);
+            }
+        })
+    </script>
+</body>
+
+</html>
