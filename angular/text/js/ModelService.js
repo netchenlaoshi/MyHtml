@@ -50,7 +50,7 @@ model.factory('modelService', function () {
                 }
             }
 
-            var guest = new Guest(name, phone);     
+            var guest = new Guest(name, phone);
             this.list.push(guest);
             return {
                 code: 0,
